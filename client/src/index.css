@@ -35,3 +35,13 @@ main {
 .wrapper .filter-wrapper {
   width: 30%;
 }
+
+@media screen and (max-width: 1000px) {
+  .wrapper {
+    flex-wrap: wrap;
+  }
+
+  .wrapper .filter-wrapper {
+    width: 100%;
+  }
+}

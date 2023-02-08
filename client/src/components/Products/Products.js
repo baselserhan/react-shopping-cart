@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../../css/Products/Products.css";
-import Modal from "react-modal";
 import ProductModal from "./ProductModal";
 
 function Products(props) {
