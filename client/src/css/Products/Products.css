@@ -30,6 +30,7 @@
   padding: 7px;
   border-radius: 6px;
   cursor: pointer;
+  transition: 0.5s;
 }
 .products-wrapper .product-item button:hover {
   background: #3778d3;
