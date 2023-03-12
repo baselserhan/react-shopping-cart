@@ -11,7 +11,7 @@ function Checkout(props) {
           <span className="close-icon" onClick={() => props.setShowForm(false)}>
             &times;
           </span>
-          <Zoom left>
+          <Zoom>
             <form onSubmit={props.submitOrder}>
               <Input
                 label="Name"
