@@ -4,8 +4,10 @@ import Header from "./components/Header/Header";
 import data from "./data.json";
 import { useEffect, useState } from "react";
 import Products from "./components/Products/Products";
+import { Provider } from "react-redux";
 import Filter from "./components/Filter/Filter";
 import Cart from "./components/Cart/Cart";
+import store from "./store/store";
 
 function App() {
   const [products, setProducts] = useState(data);
@@ -68,23 +70,25 @@ function App() {
     setCartItems(cartItemsClone.filter((p) => p.id !== product.id));
   };
   return (
-    <div className="layout">
-      <Header />
-      <main>
-        <div className="wrapper">
-          <Products products={products} addToCart={addToCart} />
-          <Filter
-            productsNumber={products.length}
-            size={size}
-            sort={sort}
-            handleFilterBySize={handleFilterBySize}
-            handleFilterByOrder={handleFilterByOrder}
-          />
-        </div>
-        <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
-      </main>
-      <Footer />
-    </div>
+    <Provider store={store}>
+      <div className="layout">
+        <Header />
+        <main>
+          <div className="wrapper">
+            <Products products={products} addToCart={addToCart} />
+            <Filter
+              productsNumber={products.length}
+              size={size}
+              sort={sort}
+              handleFilterBySize={handleFilterBySize}
+              handleFilterByOrder={handleFilterByOrder}
+            />
+          </div>
+          <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
+        </main>
+        <Footer />
+      </div>
+    </Provider>
   );
 }
 
