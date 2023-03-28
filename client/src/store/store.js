@@ -15,3 +15,8 @@ const store = createStore(
 );
 
 export default store;
+
+// create static type
+// create action creator => dispatch(action)
+// create reducer
+// view
