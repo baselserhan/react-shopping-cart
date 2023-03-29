@@ -70,3 +70,38 @@
     padding: 0 15px;
   }
 }
+.order-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+.order-info .alert-success {
+  background-color: green;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  text-transform: capitalize;
+}
+.order-info .close-icon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.order-info table {
+  border: 1px solid #c0c0c0;
+}
+.order-info table tr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #c0c0c0;
+}
+.order-info table tr:last-of-type {
+  border-bottom: 0;
+}
+.order-info table tr td {
+  padding: 10px;
+}
