@@ -59,9 +59,9 @@ function App() {
     setCartItems(cartItemsClone);
   };
 
-  useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  }, [cartItems]);
+  // useEffect(() => {
+  //   localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  // }, [cartItems]);
 
   const removeFromCart = (product) => {
     const cartItemsClone = [...cartItems];
