@@ -3,13 +3,15 @@ import "../../css/Cart/Cart.css";
 import Checkout from "../CheckoutForm/Checkout";
 import Bounce from "react-reveal/Bounce";
 import { connect } from "react-redux";
-import { removeCart } from "../../store/actions/cart";
+import { removeCart, clearCart } from "../../store/actions/cart";
 import OrderModal from "./OrderModal";
+import { createOrder, clearOrder } from "../../store/actions/orders";
 
 function Cart(props) {
   const [showForm, setShowForm] = useState(false);
   const [value, setValue] = useState("");
   const [order, setOrder] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
 
   const submitOrder = (e) => {
     e.preventDefault();
@@ -19,7 +21,7 @@ function Cart(props) {
       email: value.email,
     };
 
-    setOrder(order);
+    props.createOrder(order);
   };
 
   const handleChange = (e) => {
@@ -30,13 +32,15 @@ function Cart(props) {
   };
 
   const closeModal = () => {
-    setOrder(false);
+    props.clearOrder();
+    setCartItems(null);
+    setShowForm(false);
   };
 
   return (
     <div className="cart-wrapper">
       <div className="cart-title">
-        {props.cartItems.length === 0 ? (
+        {props.cartItems.length === 0 && !props.order ? (
           "Cart Empty"
         ) : (
           <p>There is {props.cartItems.length} products in cart</p>
@@ -45,7 +49,7 @@ function Cart(props) {
       {/* Modal */}
       <OrderModal
         cartItems={props.cartItems}
-        order={order}
+        order={props.order}
         closeModal={closeModal}
       />
       <Bounce left cascade>
@@ -93,8 +97,9 @@ function Cart(props) {
 export default connect(
   (state) => {
     return {
+      order: state.order.order,
       cartItems: state.cart.cartItems,
     };
   },
-  { removeCart }
+  { removeCart, createOrder, clearOrder, clearCart }
 )(Cart);
