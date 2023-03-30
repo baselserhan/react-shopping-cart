@@ -23,7 +23,7 @@ function Products(props) {
   return (
     <Bounce left cascade>
       <div className="products-wrapper">
-        {props.products.length
+        {props.products
           ? props.products.map((product) => (
               <div className="product-item" key={product.id}>
                 <a href="#" onClick={() => openModal(product)}>
