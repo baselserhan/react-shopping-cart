@@ -3,7 +3,22 @@ header {
   background-color: #2a5ea5;
   color: #fff;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 30px;
+}
+header .logo {
   font-size: 20px;
+}
+header ul {
+  display: flex;
+  list-style: none;
+  column-gap: 15px;
+}
+header ul li > a {
+  text-decoration: none;
+  color: #fff;
+}
+header ul li > a.active {
+  text-decoration: underline;
 }
