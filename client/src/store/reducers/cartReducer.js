@@ -14,7 +14,7 @@ export const cartReducer = (
       return { cartItems: action.data.cartItems };
 
     case CLEAR_CART:
-      return { ...state, cartItems: [] };
+      return { ...state, products: [] };
 
     default:
       return state;

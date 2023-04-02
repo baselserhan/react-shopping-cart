@@ -25,7 +25,7 @@ function OrderModal(props) {
                 <td>Total:</td>
                 <td>
                   {cartItems.reduce((a, p) => {
-                    return a + p.price;
+                    return a + p.price * p.qty;
                   }, 0)}
                 </td>
               </tr>
