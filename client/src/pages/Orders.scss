@@ -1,0 +1,20 @@
+.orders table {
+  width: 100%;
+
+  thead {
+    background-color: #092852;
+    color: #fff;
+
+    th {
+      padding: 10px;
+    }
+  }
+
+  tr {
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #f0f0f0;
+      text-align: center;
+    }
+  }
+}
