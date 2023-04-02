@@ -7,6 +7,7 @@ import { removeCart, clearCart } from "../../store/actions/cart";
 import OrderModal from "./OrderModal";
 import { createOrder, clearOrder } from "../../store/actions/orders";
 import { words } from "../../words";
+import Swal from "sweetalert2";
 
 function Cart(props) {
   const [showForm, setShowForm] = useState(false);
@@ -69,7 +70,25 @@ function Cart(props) {
                     {words.cartPrice}: ${item.price}
                   </p>
                 </div>
-                <button onClick={() => props.removeCart(item)}>
+                <button
+                  onClick={() =>
+                    Swal.fire({
+                      icon: "question",
+                      title: "Delete Product!",
+                      text: "Are you sure?",
+                      showConfirmButton: true,
+                      showCancelButton: true,
+                      confirmButtonColor: "#CF0A0A",
+                      cancelButtonColor: "#B2B2B2",
+                      confirmButtonText: "Delete",
+                      cancelButtonText: "deny",
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        props.removeCart(item);
+                      }
+                    })
+                  }
+                >
                   {words.removeBtn}
                 </button>
               </div>
@@ -82,7 +101,7 @@ function Cart(props) {
           <div className="total">
             {words.total}: $
             {props.cartItems.reduce((acc, p) => {
-              return acc + p.price;
+              return acc + p.price * p.qty;
             }, 0)}
           </div>
           <button className="btn" onClick={() => setShowForm(true)}>

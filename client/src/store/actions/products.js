@@ -23,7 +23,7 @@ export const filteredSize = (products, value) => {
       type: FILTER_SIZE,
       data: {
         size: value,
-        products: value == "All" ? products : newProducts,
+        products: value == "ALL" ? products : newProducts,
       },
     });
   };

@@ -1,4 +1,5 @@
 import { ADD_CART, CLEAR_CART, REMOVE_CART } from "./types";
+import Swal from "sweetalert2";
 
 export const addToCart = (product) => {
   return (dispatch, getState) => {
@@ -21,6 +22,15 @@ export const addToCart = (product) => {
       },
     });
     localStorage.setItem("cartItems", JSON.stringify(cartItemsClone));
+    Swal.fire({
+      position: "top-right",
+      icon: "success",
+      text: "Added to cart",
+      showConfirmButton: false,
+      timer: 2500,
+      width: "25rem",
+      heightAuto: true,
+    });
   };
 };
 
@@ -38,6 +48,13 @@ export const removeCart = (product) => {
       },
     });
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+    Swal.fire({
+      icon: "success",
+      title: "Great!",
+      text: "Product deleted successfully",
+      timer: 2000,
+      showConfirmButton: false,
+    });
   };
 };
 
